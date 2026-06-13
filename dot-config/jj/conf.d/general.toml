@@ -1,0 +1,13 @@
+[ui]
+default-command = ['log', '-n', '10']
+
+[revsets]
+log = "all()"
+
+[aliases]
+bm = ['bookmark', 'move']
+bmm = ['bookmark', 'move', 'main', '-t', '@-']
+cm = ['commit', '-m']
+rbm = ['rebase', '-o', 'main']
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+

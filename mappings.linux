@@ -1,0 +1,16 @@
+#!/usr/bin/env nu
+
+
+const mappings = [
+    { source: "dot-config/jj/conf.d", destination: "~/.config/jj/conf.d", type: "symlink" },
+]
+
+$mappings | each { |mapping|
+    if $mapping.type == "symlink" {
+        ln -s ($mapping.source | path expand) ($mapping.destination | path expand) | ignore
+    } else {
+        echo "Unknown mapping type: ($mapping.type)"
+    }
+}
+
+return
