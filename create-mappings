@@ -1,0 +1,13 @@
+#!/usr/bin/env nu
+
+def main [file: string] {
+  let mappings = open $file
+  $mappings | each { |mapping|
+    if $mapping.type == "symlink" {
+      ln -s ($mapping.source | path expand) ($mapping.destination | path expand) | ignore
+    } else {
+      echo "Unknown mapping type: ($mapping.type)"
+    }
+  }
+  return
+}

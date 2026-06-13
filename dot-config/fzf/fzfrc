@@ -1,0 +1,5 @@
+--scheme=path
+--color=dark
+--reverse
+--margin 1%
+--highlight-line
