@@ -9,5 +9,6 @@ bm = ['bookmark', 'move']
 bmm = ['bookmark', 'move', 'main', '-t', '@-']
 cm = ['commit', '-m']
 rbm = ['rebase', '-o', 'main']
+gp = ['git', 'push']
 #:schema https://jj-vcs.github.io/jj/latest/config-schema.json
 
