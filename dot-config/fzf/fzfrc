@@ -1,5 +1,8 @@
 --scheme=path
 --color=dark
 --reverse
---margin 1%
+--margin 10%
+--border=rounded
 --highlight-line
+--cycle
+
