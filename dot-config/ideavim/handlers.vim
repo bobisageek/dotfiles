@@ -19,3 +19,5 @@ sethandler <M-f> a:ide
 sethandler <C-f> a:ide
 sethandler <C-\\> a:ide
 
+
+sethandler <M-A-C-S-f> a:ide

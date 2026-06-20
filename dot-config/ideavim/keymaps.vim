@@ -35,6 +35,8 @@ call s:mapDesc('<leader>gl', ':action Vcs.Show.Log<CR>', '[l]og')
 call s:mapDesc('<leader>gr', ':action Git.Fetch<CR>', '[r]efresh (fetch)')
 call s:mapDesc('<leader>ga', ':action Annotate<CR>', '[a]nnotate')
 call s:mapDesc('<leader>gp', ':action Vcs.Push<CR>', '[p]ush')
+call s:mapDesc('<leader>gg', ':action Git.Pull<CR>', '[p]ull')
+call s:mapDesc('<leader>gb', ':action Git.Branches<CR>', '[b]ranches')
 nmap Y y$
 
 " IDEA quick actions
@@ -59,7 +61,9 @@ call s:mapDesc('ss', ':action GotoSymbol<CR>', '[s]ymbol')
 call s:mapDesc('sj', ':action AceAction<CR>', 'ace[j]ump' )
 
 " this file
-call s:nv('<leader>ff', ':action ReformatCode<CR>', '[f]ormat')
+call s:nv('<leader>df', ':action ReformatCode<CR>', '[f]ormat')
+call s:nv('<leader>ff', ':action Find<CR>', '[f]ind in this [f]ile')
+call s:nv('<leader>sg', ':action FindInPath<CR>', '[f]ind [e]verywhere')
 
 " display/views
 call s:addDesc('<leader>d', '[D]isplay')
