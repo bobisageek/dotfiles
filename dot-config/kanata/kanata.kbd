@@ -1,0 +1,89 @@
+#|
+This minimal config changes Caps Lock to act as Caps Lock on quick tap, but
+if held, it will act as Left Ctrl. It also changes the backtick/grave key to
+act as backtick/grave on quick tap, but change ijkl keys to arrow keys on hold.
+
+This text between the two pipe+octothorpe sequences is a multi-line comment.
+|#
+
+;; Text after double-semicolons are single-line comments.
+
+#|
+One defcfg entry may be added, which is used for configuration key-pairs. These
+configurations change kanata's behaviour at a more global level than the other
+configuration entries.
+|#
+
+(defcfg
+  #|
+  This configuration will process all keys pressed inside of kanata, even if
+  they are not mapped in defsrc. This is so that certain actions can activate
+  at the right time for certain input sequences. By default, unmapped keys are
+  not processed through kanata due to a Windows issue related to AltGr. If you
+  use AltGr in your keyboard, you will likely want to follow the simple.kbd
+  file while unmapping lctl and ralt from defsrc.
+  |#
+  process-unmapped-keys yes
+)
+
+(defvar
+  tap-time 200
+  hold-time 200
+  mouse-interval 3
+  mouse-distance 1
+  mwheel-distance 40)
+
+(defsrc
+            esc
+            grv
+            tab q w e r t y u i o p
+            caps a s d f g h j k l ;
+  F19 F20   lshift z x c v b n m , . / rshift up
+  F21       lctl lmet lalt spc ralt  rctl left down right
+)
+
+(deflayer default
+            @esc
+            @grv
+            @tab q      w      e      r      t y u      i      o      p
+            @cap @hrm-a @hrm-s @hrm-d @hrm-f g h @hrm-j @hrm-k @hrm-l @hrm-semic
+  F19 F20   lshift z    x      c      v      b n m      ,      .      / rshift up
+  M-/       lctl lmet lalt @spc-raised ralt  @hyper  left down right
+)
+
+(deflayer raised
+            esc
+            grv
+            @qclick _ @mw↑ _ r _ bspc home pgdn pgup end
+            @cap @mw← @mw↓ @mw→ f _ left down up right _
+  F19 F20   @fst mlft mmid mrgt v _ _ _ , _ / _ @m↑
+  M-/       lctl lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
+)
+
+(defalias
+  meh (multi lctl lmet lalt)
+  cap (tap-hold-press 500 500 esc @meh)
+  esc (tap-hold-press 500 500 esc lrld)
+  tab (tap-hold-press 500 500 tab lmet)
+  grv (tap-hold-press 500 500 grv (layer-while-held raised))
+  hyper (multi lsft lctl lalt lmet)
+  spc-raised (tap-hold $tap-time $hold-time spc (layer-while-held raised))
+  hrm-a (tap-hold $tap-time $hold-time a lsft)
+  hrm-s (tap-hold $tap-time $hold-time s lctl)
+  hrm-d (tap-hold $tap-time $hold-time d lmet)
+  hrm-f (tap-hold $tap-time $hold-time f lalt)
+  hrm-j (tap-hold $tap-time $hold-time j lalt)
+  hrm-k (tap-hold $tap-time $hold-time k lmet)
+  hrm-l (tap-hold $tap-time $hold-time l lctl)
+  hrm-semic (tap-hold $tap-time $hold-time ; lsft)
+  m↑ (movemouse-up $mouse-interval $mouse-distance)
+  m← (movemouse-left $mouse-interval $mouse-distance)
+  m↓ (movemouse-down $mouse-interval $mouse-distance)
+  m→ (movemouse-right $mouse-interval $mouse-distance)
+  mw↑ (mwheel-up $mouse-interval $mwheel-distance)
+  mw← (mwheel-left $mouse-interval $mwheel-distance)
+  mw↓ (mwheel-down $mouse-interval $mwheel-distance)
+  mw→ (mwheel-right $mouse-interval $mwheel-distance)
+  fst (movemouse-speed 200)
+  qclick (macro-repeat mltp 30)
+)
