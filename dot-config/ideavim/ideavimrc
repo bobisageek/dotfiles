@@ -1,0 +1,6 @@
+let mapleader = "\<Space>"
+
+source ~/.config/ideavim/handlers.vim
+source ~/.config/ideavim/sets.vim
+source ~/.config/ideavim/which-key.vim
+source ~/.config/ideavim/keymaps.vim

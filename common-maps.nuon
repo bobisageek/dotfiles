@@ -1,6 +1,9 @@
 [
     { source: "dot-config/jj/conf.d", destination: "~/.config/jj", type: "symlink" },
     { source: "dot-config/fzf", destination: "~/.config", type: "symlink" },
+    { source: "dot-config/ideavim", destination: "~/.config", type: "symlink" },
+    { source: "dot-config/zellij", destination: "~/.config", type: "symlink" },
     { source: "dot-agents/skills", destination: "~/.agents", type: "symlink" },
+
 ]
 
