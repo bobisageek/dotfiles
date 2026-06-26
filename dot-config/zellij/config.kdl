@@ -148,11 +148,13 @@ keybinds clear-defaults=true {
         bind "Alt f" { ToggleFloatingPanes; }
         bind "Alt h" { MoveFocusOrTab "left"; }
         bind "Alt Shift h" { GoToPreviousTab; }
+        bind "Alt Shift left" { GoToPreviousTab; }
         bind "Alt i" { MoveTab "left"; }
         bind "Alt j" { MoveFocus "down"; }
         bind "Alt k" { MoveFocus "up"; }
         bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt Shift l" { GoToNextTab; }
+        bind "Alt Shift right" { GoToNextTab; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt q" { LaunchOrFocusPlugin "filepicker"; }
