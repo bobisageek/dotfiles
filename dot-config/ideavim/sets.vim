@@ -18,4 +18,5 @@ set highlightedyank
 set visualbell
 set surround
 set NERDTree
-
+set indentwise
+set VimEverywhere
