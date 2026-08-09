@@ -389,7 +389,7 @@ scroll_buffer_size 2000
 // if it is already running or creates it otherwise.
 // Default: false
 //
-// attach_to_session true
+attach_to_session true
 
 // Toggle between having Zellij lay out panes according to a predefined set of layouts whenever possible
 // Options:
@@ -403,7 +403,7 @@ scroll_buffer_size 2000
 //   - true (default)
 //   - false
 //
-session_serialization false
+// session_serialization false
 
 // Whether pane viewports are serialized along with the session, default is false
 // Options:
