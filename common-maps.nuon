@@ -3,6 +3,7 @@
     { source: "dot-config/fzf", destination: "~/.config", type: "symlink" },
     { source: "dot-config/ideavim", destination: "~/.config", type: "symlink" },
     { source: "dot-config/kanata", destination: "~/.config", type: "symlink" },
+    { source: "dot-config/kitty", destination: "~/.config", type: "symlink" },
     { source: "dot-config/zellij", destination: "~/.config", type: "symlink" },
     { source: "dot-agents/skills", destination: "~/.agents", type: "symlink" },
 ]
