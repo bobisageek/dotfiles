@@ -9,6 +9,7 @@ clj-kondo
 clojure
 dra
 elvish
+eza
 fzf
 gcc
 gh
@@ -21,6 +22,7 @@ helix
 jet
 jj
 kanata
+kitty
 kotlin
 lazygit
 lazyjj
