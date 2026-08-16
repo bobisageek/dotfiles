@@ -1,0 +1,44 @@
+LAUNCH_AGENTS_PATH="$HOME/Library/LaunchAgents"
+KANATA_VK_AGENT_ID="local.kanata-vk-agent"
+KANATA_VK_AGENT="/opt/homebrew/bin/kanata-vk-agent"
+KANATA_VK_AGENT_PLIST="$LAUNCH_AGENTS_PATH/$KANATA_VK_AGENT_ID.plist"
+
+cat <<EOF | tee "$KANATA_VK_AGENT_PLIST" >/dev/null
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>$KANATA_VK_AGENT_ID</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>$KANATA_VK_AGENT</string>
+      <string>-p</string>
+      <string>42020</string>
+      <string>-b</string>
+      <string>com.mitchellh.ghostty,net.kovidgoyal.kitty</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true />
+
+    <key>KeepAlive</key>
+    <dict>
+      <key>Crashed</key>
+      <true />
+      <key>SuccessfulExit</key>
+      <false />
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/kanata_vk_agent_stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/kanata_vk_agent_stderr.log</string>
+  </dict>
+</plist>
+EOF
+
+launchctl bootout gui/$(id -u) "$KANATA_VK_AGENT_PLIST" 2>/dev/null || true
+launchctl bootstrap gui/$(id -u) "$KANATA_VK_AGENT_PLIST"
+launchctl enable "gui/$(id -u)/$KANATA_VK_AGENT_ID"

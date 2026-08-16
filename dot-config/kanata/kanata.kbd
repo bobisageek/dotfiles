@@ -1,8 +1,4 @@
 #|
-This minimal config changes Caps Lock to act as Caps Lock on quick tap, but
-if held, it will act as Left Ctrl. It also changes the backtick/grave key to
-act as backtick/grave on quick tap, but change ijkl keys to arrow keys on hold.
-
 This text between the two pipe+octothorpe sequences is a multi-line comment.
 |#
 
@@ -26,6 +22,21 @@ configuration entries.
   process-unmapped-keys yes
 )
 
+(defvirtualkeys
+  com.mitchellh.ghostty nop0
+  net.kovidgoyal.kitty nop0
+)
+
+(platform (macos)
+  (defalias
+    lctl lmet
+    lmet lctl))
+
+(platform (linux win)
+  (defalias
+    lctl lctl
+    lmet lmet))
+
 (defvar
   tap-time 200
   hold-time 200
@@ -48,7 +59,7 @@ configuration entries.
             @tab q      w      e      r      t y u      i      o      p
             @cap @hrm-a @hrm-s @hrm-d @hrm-f g h @hrm-j @hrm-k @hrm-l @hrm-semic
   F19 F20   lshift z    x      c      v      b n m      ,      .      / rshift up
-  M-/       lctl lmet lalt @spc-raised ralt  @hyper  left down right
+  M-/       @lctl @lmet lalt @spc-raised ralt  @hyper  left down right
 )
 
 (deflayer raised
@@ -57,24 +68,24 @@ configuration entries.
             @qclick _ @mw↑ _ r _ bspc home pgdn pgup end
             @cap @mw← @mw↓ @mw→ f _ left down up right _
   F19 F20   @fst mlft mmid mrgt v _ _ _ , _ / _ @m↑
-  M-/       lctl lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
+  M-/       @lctl @lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
 )
 
 (defalias
   meh (multi lctl lmet lalt)
   cap (tap-hold-press 500 500 esc @meh)
   esc (tap-hold-press 500 500 esc lrld)
-  tab (tap-hold-press 500 500 tab lmet)
+  tab (tap-hold-press 500 500 tab @lmet)
   grv (tap-hold-press 500 500 grv (layer-while-held raised))
   hyper (multi lsft lctl lalt lmet)
   spc-raised (tap-hold $tap-time $hold-time spc (layer-while-held raised))
   hrm-a (tap-hold $tap-time $hold-time a lsft)
-  hrm-s (tap-hold $tap-time $hold-time s lctl)
-  hrm-d (tap-hold $tap-time $hold-time d lmet)
+  hrm-s (tap-hold $tap-time $hold-time s @lctl)
+  hrm-d (tap-hold $tap-time $hold-time d @lmet)
   hrm-f (tap-hold $tap-time $hold-time f lalt)
   hrm-j (tap-hold $tap-time $hold-time j lalt)
-  hrm-k (tap-hold $tap-time $hold-time k lmet)
-  hrm-l (tap-hold $tap-time $hold-time l lctl)
+  hrm-k (tap-hold $tap-time $hold-time k @lmet)
+  hrm-l (tap-hold $tap-time $hold-time l @lctl)
   hrm-semic (tap-hold $tap-time $hold-time ; lsft)
   m↑ (movemouse-up $mouse-interval $mouse-distance)
   m← (movemouse-left $mouse-interval $mouse-distance)
