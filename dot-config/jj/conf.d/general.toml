@@ -1,5 +1,6 @@
 [ui]
 default-command = ['log', '-n', '10']
+diff-editor = ":builtin"
 
 [revsets]
 log = "all()"
