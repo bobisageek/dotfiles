@@ -6,5 +6,6 @@
     { source: "dot-config/kitty", destination: "~/.config", type: "symlink" },
     { source: "dot-config/zellij", destination: "~/.config", type: "symlink" },
     { source: "dot-agents/skills", destination: "~/.agents", type: "symlink" },
+    { source: "dot-local/bin/kt", destination: "~/.local/bin", type: "symlink" },
 ]
 
