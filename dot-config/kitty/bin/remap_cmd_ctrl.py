@@ -22,12 +22,18 @@ if getenv("KITTY_OS") == "macos" or sys.argv.__len__()> 1:
     # Generate all combinations of modifiers
     for r in range(1, len(mods_pool) + 1):
         for combo in itertools.combinations(mods_pool, r):
-            # Must contain super, but not both super and ctrl
-            if "super" in combo and "ctrl" not in combo:
-                # Sort modifiers consistently (optional but cleaner)
-                sorted_combo = sorted(list(combo))
+            sorted_combo = sorted(list(combo))
+            
+            # super -> ctrl (only if ctrl not present)
+            if "super" in sorted_combo and "ctrl" not in sorted_combo:
                 src_mods = "+".join(sorted_combo)
                 dst_mods = "+".join([m if m != "super" else "ctrl" for m in sorted_combo])
+                for key in keys:
+                    print(f"map {src_mods}+{key} send_key {dst_mods}+{key}")
 
+            # ctrl -> super (only if super not present)
+            if "ctrl" in sorted_combo and "super" not in sorted_combo:
+                src_mods = "+".join(sorted_combo)
+                dst_mods = "+".join([m if m != "ctrl" else "super" for m in sorted_combo])
                 for key in keys:
                     print(f"map {src_mods}+{key} send_key {dst_mods}+{key}")
