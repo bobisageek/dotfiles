@@ -1,3 +1,6 @@
+# taken from https://github.com/kovidgoyal/kitty/discussions/6003
+
+
 from typing import List
 
 from kitty.boss import Boss
