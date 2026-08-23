@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
 
-def main [...args: string] {
+def --wrapped main [...args: string] {
   kitten @ --to unix:/tmp/kitty.sock ...$args
 }
