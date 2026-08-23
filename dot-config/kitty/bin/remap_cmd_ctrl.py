@@ -1,7 +1,8 @@
 from os import getenv
 import itertools
+import sys
 
-if getenv("KITTY_OS") == "macos":
+if getenv("KITTY_OS") == "macos" or sys.argv.__len__()> 1:
     keys = []
     # Lowercase letters
     keys.extend([chr(x) for x in range(ord('a'), ord('z') + 1)])
@@ -22,7 +23,7 @@ if getenv("KITTY_OS") == "macos":
     for r in range(1, len(mods_pool) + 1):
         for combo in itertools.combinations(mods_pool, r):
             sorted_combo = sorted(list(combo))
-
+            
             # super -> ctrl (only if ctrl not present)
             if "super" in sorted_combo and "ctrl" not in sorted_combo:
                 src_mods = "+".join(sorted_combo)
