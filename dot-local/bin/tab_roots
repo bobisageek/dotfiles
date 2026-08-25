@@ -1,0 +1,9 @@
+#!/usr/bin/env nu
+
+let dirs = [('~/.local/bin/' | path expand)] ++ (
+['~/.config', '~/code'] | each { |root|
+  ^fd --search-path ($root | path expand) --type directory --type symlink --exact-depth 1
+  }
+)
+
+$dirs | str join "\n"

@@ -1,0 +1,7 @@
+#!/usr/bin/env -S nu -l
+
+let dest = tab_roots | fz
+
+if $dest != null {
+  kt action launch --type tab --tab-title ($dest | path basename) --cwd $dest
+}

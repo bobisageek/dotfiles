@@ -1,0 +1,5 @@
+#!/usr/bin/env nu
+
+$env.FZF_DEFAULT_OPTS_FILE = '~/.config/fzf/fzfrc' | path expand
+
+fzf
