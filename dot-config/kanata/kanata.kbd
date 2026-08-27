@@ -32,6 +32,10 @@ configuration entries.
     lctl lmet
     lmet lctl))
 
+(platform (macos)
+  (defoverrides
+    (F21) (lmet /)))
+
 (platform (linux win)
   (defalias
     lctl lctl
@@ -46,29 +50,29 @@ configuration entries.
 
 (defsrc
             esc
-            grv
-            tab q w e r t y u i o p
-            caps a s d f g h j k l ;
+  F13 F14   grv
+  F15 F16   tab q w e r t y u i o p
+  F17 F18   caps a s d f g h j k l ;
   F19 F20   lshift z x c v b n m , . / rshift up
-  F21       lctl lmet lalt spc ralt  rctl left down right
+  F21 F22   lctl lmet lalt spc ralt  rctl left down right
 )
 
 (deflayer default
             @esc
-            @grv
-            @tab q      w      e      r      t y u      i      o      p
-            @cap @hrm-a @hrm-s @hrm-d @hrm-f g h @hrm-j @hrm-k @hrm-l @hrm-semic
+  F13 F14   @grv
+  F15 F16   @tab q      w      e      r      t y u      i      o      p
+  F17 F18   @cap @hrm-a @hrm-s @hrm-d @hrm-f g h @hrm-j @hrm-k @hrm-l @hrm-semic
   F19 F20   lshift z    x      c      v      b n m      ,      .      / rshift up
-  M-/       @lctl @lmet lalt @spc-raised ralt  @hyper  left down right
+  F21 F22   @lctl @lmet lalt @spc-raised ralt  @hyper  left down right
 )
 
 (deflayer raised
             esc
-            grv
-            @qclick _ @mw↑ _ r _ bspc home pgdn pgup end
-            @cap @mw← @mw↓ @mw→ f _ left down up right _
+  F13 F14   grv
+  F15 F16   @qclick _ @mw↑ _ r _ bspc home pgdn pgup end
+  F17 F18   @cap @mw← @mw↓ @mw→ f _ left down up right _
   F19 F20   @fst mlft mmid mrgt v _ _ _ , _ / _ @m↑
-  M-/       @lctl @lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
+  F21 F22   @lctl @lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
 )
 
 (defalias
