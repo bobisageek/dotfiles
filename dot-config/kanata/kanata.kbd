@@ -34,7 +34,7 @@ configuration entries.
 
 (platform (macos)
   (defoverrides
-    (F21) (lmet /)))
+    (F21) (lctl /)))
 
 (platform (linux win)
   (defalias
