@@ -30,7 +30,17 @@ configuration entries.
 (platform (macos)
   (defalias
     lctl lmet
-    lmet lctl))
+    lmet lctl
+    F13 F13
+    F14 F14
+    F15 F15
+    F16 F16
+    F17 F17
+    F18 F18
+    F19 F19
+    F20 F20
+    F21 F21  ;; overridden
+    F22 F22))
 
 (platform (macos)
   (defoverrides
@@ -39,7 +49,27 @@ configuration entries.
 (platform (linux win)
   (defalias
     lctl lctl
-    lmet lmet))
+    lmet lmet
+    ;; F13 - mic - XF86Tools
+    F13 F13
+    ;; F14 - light bulb - XF86Launch5
+    F14 F14
+    ;; F15 - M1
+    F15 F15
+    ;; F16 - M2
+    F16 F16
+    ;; F17 - M3
+    F17 F17
+    ;; F18 - M4
+    F18 (on-press toggle-vkey barelayer)
+    F19 F19
+    F20 F20
+    F21 F21
+    F22 F22))
+
+(platform (linux)
+  (defvirtualkeys
+    barelayer (layer-while-held bare)))
 
 (defvar
   tap-time 200
@@ -49,30 +79,39 @@ configuration entries.
   mwheel-distance 40)
 
 (defsrc
-            esc
-  F13 F14   grv
-  F15 F16   tab q w e r t y u i o p
-  F17 F18   caps a s d f g h j k l ;
-  F19 F20   lshift z x c v b n m , . / rshift up
-  F21 F22   lctl lmet lalt spc ralt  rctl left down right
+              esc
+  F13 F14     grv
+  F15 F16     tab q w e r t y u i o p
+  F17 F18     caps a s d f g h j k l ;
+  F19 F20     lshift z x c v b n m , . / rshift up
+  F21 F22     lctl lmet lalt spc ralt  rctl left down right
 )
 
 (deflayer default
-            @esc
-  F13 F14   @grv
-  F15 F16   @tab q      w      e      r      t y u      i      o      p
-  F17 F18   @cap @hrm-a @hrm-s @hrm-d @hrm-f g h @hrm-j @hrm-k @hrm-l @hrm-semic
-  F19 F20   lshift z    x      c      v      b n m      ,      .      / rshift up
-  F21 F22   @lctl @lmet lalt @spc-raised ralt  @hyper  left down right
+              @esc
+  @F13 @F14   @grv
+  @F15 @F16   @tab q      w      e      r      t y u      i      o      p
+  @F17 @F18   @cap @hrm-a @hrm-s @hrm-d @hrm-f g h @hrm-j @hrm-k @hrm-l @hrm-semic
+  @F19 @F20   lshift z    x      c      v      b n m      ,      .      / rshift up
+  @F21 @F22   @lctl @lmet lalt @spc-raised ralt  @hyper  left down right
+)
+
+(deflayer bare
+              esc
+  F13 F14     grv
+  F15 F16     tab q w e r t y u i o p
+  F17 @F18    caps a s d f g h j k l ;
+  F19 F20     lshift z x c v b n m , . / rshift up
+  F21 F22     lctl lmet lalt spc ralt  rctl left down right
 )
 
 (deflayer raised
-            esc
-  F13 F14   grv
-  F15 F16   @qclick _ @mw↑ _ r _ bspc home pgdn pgup end
-  F17 F18   @cap @mw← @mw↓ @mw→ f _ left down up right _
-  F19 F20   @fst mlft mmid mrgt v _ _ _ , _ / _ @m↑
-  F21 F22   @lctl @lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
+              esc
+  @F13 @F14   grv
+  @F15 @F16   @qclick _ @mw↑ _ r _ bspc home pgdn pgup end
+  @F17 @F18   @cap @mw← @mw↓ @mw→ f _ left down up right _
+  @F19 @F20   @fst mlft mmid mrgt v _ _ _ , _ / _ @m↑
+  @F21 @F22   @lctl @lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
 )
 
 (defalias
