@@ -1,1 +1,1 @@
---single-instance --listen-on=unix:/tmp/kitty.sock
+--single-instance --listen-on=unix:/tmp/kitty.sock --session ~/.local/share/kitty/sessions/work.kitty-session
