@@ -8,6 +8,5 @@
     { source: "dot-agents/skills", destination: "~/.agents", type: "symlink" },
     { source: "dot-local/bin/kt", destination: "~/.local/bin", type: "symlink" },
     { source: "dot-local/bin/tab_roots", destination: "~/.local/bin", type: "symlink" },
-    { source: "dot-local/bin/fz", destination: "~/.local/bin", type: "symlink" },
 ]
 
