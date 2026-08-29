@@ -1,0 +1,34 @@
+#!/usr/bin/env -S nu -l
+# vim: ft=nu
+
+def panic [msg: string] {
+  print $msg
+  exit 1
+}
+
+def get_tabs [] {
+  let ls_result = kt ls --match state:focused_os_window | from json
+  if ($ls_result | length) != 1 {
+    panic "number of OS windows isn't exactly one"
+  }
+  let tabs = $ls_result | first | get tabs | select id title windows |
+    enumerate | flatten | rename -c { index: idx } | update idx { $in + 1 }
+  return $tabs
+}
+
+def select_and_swap_tab [tabs] {
+  let tab_titles = $tabs | each { $"($in.idx):($in.title)"} | to text
+  let selected_tab = $tab_titles | (fzf --accept-nth '{n}' --bind 'result:jump,jump:accept,jump-cancel:abort')
+  if $selected_tab != null {
+    kt action goto_tab (($selected_tab | into int) + 1)
+  }
+}
+
+def main [entity: string] {
+  let tabs = get_tabs
+  match $entity {
+    'tab' => { select_and_swap_tab $tabs }
+    _ => { panic "invalid target entity" }
+  }
+}
+
