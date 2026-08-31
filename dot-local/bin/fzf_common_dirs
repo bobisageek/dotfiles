@@ -6,4 +6,4 @@ let dirs = [('~/.local/bin/' | path expand)] ++ (
   }
 )
 
-$dirs | str join "\n"
+$dirs | str join "\n" | fzf -d / --with-nth '4..' --preview 'fd -I . --strip-cwd-prefix --base-directory {}' --preview-window=,30%

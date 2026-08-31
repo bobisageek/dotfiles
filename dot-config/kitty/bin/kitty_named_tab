@@ -1,6 +1,6 @@
 #!/usr/bin/env -S nu -l
 
-let dest = tab_roots | fzf
+let dest = fzf_common_dirs
 
 if $dest != null {
   kt action launch --type tab --tab-title ($dest | path basename) --cwd $dest
