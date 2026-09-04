@@ -17,7 +17,7 @@ cat <<EOF | tee "$KANATA_VK_AGENT_PLIST" >/dev/null
       <string>-p</string>
       <string>42020</string>
       <string>-b</string>
-      <string>com.mitchellh.ghostty,net.kovidgoyal.kitty</string>
+      <string>com.mitchellh.ghostty,net.kovidgoyal.kitty,com.neovide.neovide</string>
     </array>
 
     <key>RunAtLoad</key>
