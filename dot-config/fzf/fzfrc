@@ -1,8 +1,8 @@
 --scheme=path
 --color=dark
 --reverse
---margin 2%
+--margin=2%
 --border=rounded
 --highlight-line
 --cycle
-
+--bind="`:jump,jump:accept"
