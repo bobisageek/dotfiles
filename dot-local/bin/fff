@@ -1,0 +1,15 @@
+#!/usr/bin/env nu
+
+# vim: ft=nu
+
+let configs_dir = ('~/.config/fzf/' | path expand)
+
+let default_config = 'fzfrc'
+
+def --wrapped main [--configs (-c): string, ...opts: string] {
+  let split_configs = $configs | split row ',' | str trim | where { $in != "" }
+  let all_configs = [$default_config] ++ $split_configs | each {|config| ($configs_dir | path join $config) }
+  let tmp_opts_file = mktemp --dry -t 'fzf_optsXXXXXX'
+  open ...$all_configs | lines | where { $in != '' } | to text | save -r $tmp_opts_file
+  try { FZF_DEFAULT_OPTS_FILE=$tmp_opts_file fzf ...$opts } finally { rm $tmp_opts_file }
+}

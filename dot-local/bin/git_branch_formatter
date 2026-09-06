@@ -1,0 +1,27 @@
+#!/usr/bin/env bb
+
+;; vim: ft=clojure
+
+(def branches
+  (->
+   (babashka.process/shell {:out :string} "git branch -a --format='%(refname:strip=1)'")
+   :out
+   str/split-lines))
+
+(defn format-one-branch [branch-ref]
+  (let [[heads-or-remote branch] (str/split branch-ref #"/" 2)]
+    (case heads-or-remote
+      "heads" branch
+      "remotes" (let [[remote branch] (str/split branch #"/" 2)]
+                  (str branch "\u001e" remote))
+      nil)))
+
+(defn format-branches [branches]
+  (->> branches
+       (map format-one-branch)
+       (remove nil?)))
+
+(->> branches
+     format-branches
+     (str/join "\n")
+     println)

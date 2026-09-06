@@ -8,5 +8,7 @@
     { source: "dot-agents/skills", destination: "~/.agents", type: "symlink" },
     { source: "dot-local/bin/kt", destination: "~/.local/bin", type: "symlink" },
     { source: "dot-local/bin/fzf_common_dirs", destination: "~/.local/bin", type: "symlink" },
+    { source: "dot-local/bin/git_branch_formatter", destination: "~/.local/bin", type: "symlink" },
+    { source: "dot-local/bin/fff", destination: "~/.local/bin", type: "symlink" },
 ]
 
