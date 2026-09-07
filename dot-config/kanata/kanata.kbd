@@ -96,8 +96,13 @@ configuration entries.
   @F21 @F22   @lctl @lmet lalt @spc-raised ralt  @hyper  left down right
 )
 
-(deflayermap (bare)
-  F18 @F18
+(deflayer bare
+              esc
+  F13 F14     grv
+  F15 F16     tab q w e r t y u i o p
+  F17 @F18    caps a s d f g h j k l ;
+  F19 F20     lshift z x c v b n m , . / rshift up
+  F21 F22     lctl lmet lalt spc ralt  rctl left down right
 )
 
 (deflayer raised
