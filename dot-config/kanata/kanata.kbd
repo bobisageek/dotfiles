@@ -61,15 +61,11 @@ configuration entries.
     ;; F17 - M3
     F17 F17
     ;; F18 - M4
-    F18 (on-press toggle-vkey barelayer)
+    F18 (layer-switch bare)
     F19 F19
     F20 F20
     F21 F21
     F22 F22))
-
-(platform (linux)
-  (defvirtualkeys
-    barelayer (layer-while-held bare)))
 
 (defvar
   tap-time 200
@@ -96,13 +92,9 @@ configuration entries.
   @F21 @F22   @lctl @lmet lalt @spc-raised ralt  @hyper  left down right
 )
 
-(deflayer bare
-              esc
-  F13 F14     grv
-  F15 F16     tab q w e r t y u i o p
-  F17 @F18    caps a s d f g h j k l ;
-  F19 F20     lshift z x c v b n m , . / rshift up
-  F21 F22     lctl lmet lalt spc ralt  rctl left down right
+(deflayermap (bare)
+  F18 (layer-switch default)
+  _ use-defsrc
 )
 
 (deflayer raised
@@ -116,11 +108,11 @@ configuration entries.
 
 (defalias
   meh (multi lctl lmet lalt)
+  hyper (multi lsft lctl lalt lmet)
   cap (tap-hold-press 500 500 esc @meh)
   esc (tap-hold-press 500 500 esc lrld)
   tab (tap-hold-press 500 500 tab @lmet)
   grv (tap-hold-press 500 500 grv (layer-while-held raised))
-  hyper (multi lsft lctl lalt lmet)
   spc-raised (tap-hold $tap-time $hold-time spc (layer-while-held raised))
   hrm-a (tap-hold $tap-time $hold-time a lsft)
   hrm-s (tap-hold $tap-time $hold-time s @lctl)
