@@ -1,4 +1,5 @@
 [
     { source: "dot-config/kanata", destination: "~/Library/Application Support", type: "symlink" },
+    { source: "dot-hammerspoon", destination: "~/.hammerspoon", type: "symlink" },
 ]
 
