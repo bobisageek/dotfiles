@@ -1,3 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nu
 
-kitty --detach --app-id "$1" --title "$1" -o tab_bar_min_tabs=5 "$1"
+def --wrapped main [app: string, ...more_args: string] {
+  let app_id_flag = if ($nu.os-info.name == "linux") { ["--app-id" $app]} else { [] }
+
+  kitty --detach ...$app_id_flag --title $app -o tab_bar_min_tabs=5 ...$more_args $app
+}
