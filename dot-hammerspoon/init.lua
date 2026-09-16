@@ -3,6 +3,8 @@ local keys = require("keys")
 local hs_menu = require("hs_menu")
 local rb = hs.loadSpoon("RecursiveBinder")
 
+require("omni")
+
 hs.hotkey.bind({"ctrl"}, "/", function()
   local win = hs.window.focusedWindow()
   if not win then return end
@@ -13,6 +15,10 @@ end)
 
 hs.hotkey.bind({"ctrl"}, "Escape", function()
   exec.nu("switch_workspace")
+end)
+
+hs.hotkey.bind({"ctrl"}, "`", function()
+  exec.nu("switch_app_window")
 end)
 
 hs.hotkey.bind(keys.hyper, "h", rb.recursiveBind(hs_menu.menuMap))
