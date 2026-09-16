@@ -10,5 +10,6 @@
     { source: "dot-local/bin/fzf_common_dirs", destination: "~/.local/bin", type: "symlink" },
     { source: "dot-local/bin/git_branch_formatter", destination: "~/.local/bin", type: "symlink" },
     { source: "dot-local/bin/fff", destination: "~/.local/bin", type: "symlink" },
+    { source: "dot-local/bin/run-terminal-with", destination: "~/.local/bin", type: "symlink" },
 ]
 
