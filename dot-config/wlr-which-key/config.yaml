@@ -1,0 +1,85 @@
+# Theming
+font: JetBrainsMono Nerd Font 12
+background: "#282828d0"
+color: "#fbf1c7"
+border: "#8ec07c"
+separator: " ➜ "
+border_width: 2
+corner_r: 10
+padding: 15 # Defaults to corner_r
+rows_per_column: 3 # No limit by default
+column_padding: 25 # Defaults to padding
+
+# Anchor and margin
+anchor: bottom # One of center, left, right, top, bottom, bottom-left, top-left, etc.
+# Only relevant when anchor is not center
+margin_right: 0
+margin_bottom: 5
+margin_left: 0
+margin_top: 0
+
+# namespace to use for the layer shell surface
+# namespace: "wlr_which_key"
+
+# Permits key bindings that conflict with compositor key bindings.
+# Default is `false`.
+inhibit_compositor_keyboard_shortcuts: false
+
+# Try to guess the correct keyboard layout to use. Default is `false`.
+auto_kbd_layout: true
+
+menu:
+  - key: "w"
+    desc: windows
+    submenu:
+      - key: [Left, h]
+        desc: left
+        cmd: winctl focus left
+        keep_open: true
+      - key: [Right, l]
+        desc: right
+        cmd: winctl focus right
+        keep_open: true
+      - key: [Up, k]
+        desc: up
+        cmd: winctl focus up
+        keep_open: true
+      - key: [Down, j]
+        desc: down
+        cmd: winctl focus down
+        keep_open: true
+      - key: [Ctrl+Left, Ctrl+h]
+        desc: move left
+        cmd: winctl move left
+        keep_open: true
+      - key: [Ctrl+Right, Ctrl+l]
+        desc: move right
+        cmd: winctl move right
+        keep_open: true
+      - key: [Ctrl+Up, Ctrl+k]
+        desc: move up
+        cmd: winctl move up
+        keep_open: true
+      - key: [Ctrl+Down, Ctrl+j]
+        desc: move down
+        cmd: winctl move down
+        keep_open: true
+  - key: "m"
+    desc: media
+    submenu:
+      - key: [p]
+        desc: play/pause
+        cmd: playerctl play-pause
+        keep_open: true
+      - key: [s]
+        desc: stop
+        cmd: playerctl stop
+        keep_open: true
+      - key: [f, ">"]
+        desc: next
+        cmd: playerctl next
+        keep_open: true
+      - key: [b, "<"]
+        desc: previous
+        cmd: playerctl previous
+        keep_open: true

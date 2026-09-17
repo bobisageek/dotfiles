@@ -1,0 +1,4 @@
+[
+    { source: "dot-config/wlr-which-key", destination: "~/.config", type: "symlink" }
+]
+
