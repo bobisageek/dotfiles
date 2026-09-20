@@ -1,0 +1,3 @@
+#!/usr/bin/env nu
+
+kt action set_tab_title ($env.PWD | path basename)
