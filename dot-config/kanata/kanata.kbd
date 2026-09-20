@@ -117,10 +117,7 @@ configuration entries.
   (right y u i o p h j k l ; n m , . / [ ] Enter Backspace))
 
 (deftemplate hrm (tap-key hold-key)
-  (tap-hold-opposite-hand $hold-time $tap-key $hold-key
-    (timeout hold)
-    (unknown-hand hold)
-    (tap-repress-timeout $tap-time)))
+  (tap-hold-order $tap-time 0 $tap-key $hold-key))
 
 (defalias
   meh (multi lctl lmet lalt)
