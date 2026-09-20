@@ -5,7 +5,7 @@ from kitty import tab_bar
 from kitty.tab_bar import (DrawData, ExtraData, TabBarData, as_rgb)
 from kitty.utils import color_as_int
 
-tab_styler = tab_bar.draw_tab_with_powerline
+tab_styler = tab_bar.draw_tab_with_separator
 
 mode_keys = {
   '': 'alt+space/w/s',
@@ -43,10 +43,14 @@ def draw_tab(
     )
 
   if is_last:
-    setup_cursor(draw_data, screen)
-    text_to_put = compute_text(mode, screen.columns - (end + 1))
+    text_to_put = compute_text(mode, screen.columns - end)
     if text_to_put:
+      text_beginning = screen.columns - len(text_to_put)
+      pad_width = text_beginning - end
+      screen.cursor.x = end
+      screen.draw(' ' * pad_width)
       screen.cursor.x = screen.columns - len(text_to_put)
+      setup_cursor(draw_data, screen)
       screen.draw(text_to_put)
 
   return end
@@ -62,4 +66,5 @@ def compute_text(mode: str, width: int) -> str:
   keys = mode_keys.get(mode, '')
   if width <= 0 or not keys:
     return ''
+  keys = '|' + keys
   return keys[:width - 1] + '' if len(keys) > width else keys
