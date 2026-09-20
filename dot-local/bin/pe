@@ -1,0 +1,9 @@
+#!/usr/bin/env nu
+
+use std/clip
+
+def main [prompt: string] {
+  let cmd = (opencode run $"return exactly a commandline that does: { ($prompt) }. Do not include markdown formatting or explanations.") | complete | get stdout | str trim
+  print $"Copying `($cmd)` to clipboard"
+  $cmd | clip copy52
+}
