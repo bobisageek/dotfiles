@@ -7,7 +7,7 @@ def panic [msg: string] {
 }
 
 def get_tabs [] {
-  let ls_result = kitten @ ls --match state:focused_os_window | from json
+  let ls_result = kt ls --match state:focused_os_window | from json
   if ($ls_result | length) != 1 {
     panic "number of OS windows isn't exactly one"
   }
