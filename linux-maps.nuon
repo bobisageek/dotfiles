@@ -1,4 +1,5 @@
 [
     { source: "dot-config/wlr-which-key", destination: "~/.config", type: "symlink" }
+    { source: "dot-local/bin/olay", destination: "~/.local/bin", type: "symlink" }
 ]
 
