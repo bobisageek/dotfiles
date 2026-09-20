@@ -79,7 +79,10 @@ menu:
         desc: next
         cmd: playerctl next
         keep_open: true
-      - key: [b, "<"]
+      - key: ["<", b]
         desc: previous
         cmd: playerctl previous
         keep_open: true
+      - key: [o]
+        desc: select output
+        cmd: switch_audio_sink
