@@ -67,6 +67,11 @@ configuration entries.
     F21 F21
     F22 F22))
 
+(platform (linux win)
+  (defoverrides
+    (rctl p) (lsft lctl lalt lmet p)))
+
+
 (defvar
   tap-time 200
   hold-time 200
@@ -89,7 +94,7 @@ configuration entries.
   @F15 @F16   @tab q      w      e      r      t y u      i      o      p
   @F17 @F18   @cap @hrm-a @hrm-s @hrm-d @hrm-f g h @hrm-j @hrm-k @hrm-l @hrm-semic
   @F19 @F20   lshift z    x      c      v      b n m      ,      .      / rshift up
-  @F21 @F22   @lctl @lmet lalt @spc-raised ralt  @hyper  left down right
+  @F21 @F22   @lctl @lmet lalt @spc-raised ralt rctl  left down right
 )
 
 (deflayermap (bare)
@@ -105,6 +110,17 @@ configuration entries.
   @F19 @F20   @fst mlft mmid mrgt v _ _ _ , _ / _ @m↑
   @F21 @F22   @lctl @lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
 )
+;; Assign physical keys to hands. Keys not listed have no hand
+;; assignment and are governed by (unknown-hand <value>) (default: ignore).
+(defhands
+  (left  q w e r t a s d f g z x c v b)
+  (right y u i o p h j k l ; n m , . / [ ] Enter Backspace))
+
+(deftemplate hrm (tap-key hold-key)
+  (tap-hold-opposite-hand $hold-time $tap-key $hold-key
+    (timeout hold)
+    (unknown-hand hold)
+    (tap-repress-timeout $tap-time)))
 
 (defalias
   meh (multi lctl lmet lalt)
@@ -114,14 +130,14 @@ configuration entries.
   tab (tap-hold-press 500 500 tab @lmet)
   grv (tap-hold-press 500 500 grv (layer-while-held raised))
   spc-raised (tap-hold $tap-time $hold-time spc (layer-while-held raised))
-  hrm-a (tap-hold $tap-time $hold-time a lsft)
-  hrm-s (tap-hold $tap-time $hold-time s @lctl)
-  hrm-d (tap-hold $tap-time $hold-time d @lmet)
-  hrm-f (tap-hold $tap-time $hold-time f lalt)
-  hrm-j (tap-hold $tap-time $hold-time j lalt)
-  hrm-k (tap-hold $tap-time $hold-time k @lmet)
-  hrm-l (tap-hold $tap-time $hold-time l @lctl)
-  hrm-semic (tap-hold $tap-time $hold-time ; lsft)
+  hrm-a (t! hrm a lsft)
+  hrm-s (t! hrm s @lctl)
+  hrm-d (t! hrm d @lmet)
+  hrm-f (t! hrm f lalt)
+  hrm-j (t! hrm j lalt)
+  hrm-k (t! hrm k @lmet)
+  hrm-l (t! hrm l @lctl)
+  hrm-semic (t! hrm ; lsft)
   m↑ (movemouse-up $mouse-interval $mouse-distance)
   m← (movemouse-left $mouse-interval $mouse-distance)
   m↓ (movemouse-down $mouse-interval $mouse-distance)
