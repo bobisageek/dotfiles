@@ -1,4 +1,0 @@
-alacritty
-bluetui
-nirius
-wiremix

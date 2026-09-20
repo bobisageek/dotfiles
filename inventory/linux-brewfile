@@ -1,0 +1,122 @@
+tap "anomalyco/tap", trusted: true
+tap "babashka/brew", trusted: true
+tap "borkdude/brew", trusted: true
+tap "jank-lang/jank", trusted: true
+tap "nooga/tap"
+tap "wezterm/wezterm-linuxbrew", trusted: true
+# Record and share terminal sessions
+brew "asciinema"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Multi-shell multi-command argument completer
+brew "carapace"
+# Dynamic, general-purpose programming language
+brew "clojure"
+# Command-line tool to download release assets from GitHub
+brew "dra"
+# Friendly and expressive shell
+brew "elvish"
+# Modern, maintained replacement for ls
+brew "eza"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GNU compiler collection
+brew "gcc"
+# GitHub command-line tool
+brew "gh"
+# Installer for the general purpose language Haskell
+brew "ghcup"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
+# JDK distribution with Graal compiler and Native Image
+brew "graalvm"
+# Gorgeous metric visualizations and dashboards for timeseries databases
+brew "grafana", restart_service: :changed
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# GNU Ubiquitous Intelligent Language for Extensions
+brew "guile"
+# Tool for glamorous shell scripts
+brew "gum"
+# Post-modern modal text editor
+brew "helix"
+# Git-compatible distributed version control system
+brew "jj"
+# Cross-platform software keyboard remapper for Linux, macOS and Windows
+brew "kanata"
+# Statically typed programming language for the JVM
+brew "kotlin"
+# Simple terminal UI for git commands
+brew "lazygit"
+# TUI for Jujutsu/jj
+brew "lazyjj"
+# Build tool for Clojure
+brew "leiningen"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# No Nonsense Neovim Client in Rust
+brew "neovide"
+# Port scanning utility for large networks
+brew "nmap"
+# Modern shell for the GitHub era
+brew "nushell"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Service monitoring system and time series database
+brew "prometheus", restart_service: :changed
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
+# File browser
+brew "ranger"
+# Repeat a command until the command succeeds
+brew "retry"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Run commands in parallel with Rust's Tokio framework
+brew "rust-parallel"
+# Steel Bank Common Lisp system
+brew "sbcl"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
+# General purpose fuzzy finder TUI
+brew "television"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Code review TUI with vim keybindings
+brew "tuicr"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
+# Programming language designed for robustness, optimality, and clarity
+brew "zig"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode", trusted: true
+# Native, fast starting Clojure interpreter for scripting.
+brew "borkdude/brew/babashka", trusted: true
+brew "babashka/brew/bbin"
+brew "babashka/brew/neil"
+# A minimal and opinionated linter for Clojure code that sparks joy.
+brew "borkdude/brew/clj-kondo"
+# Transform JSON into EDN into Transit.
+brew "borkdude/brew/jet"
+# Clojure dialect implemented as a bytecode VM in Go
+brew "nooga/tap/let-go", trusted: true
+# A GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
+brew "wezterm/wezterm-linuxbrew/wezterm", args: ["HEAD"], trusted: true
+cask "font-jetbrains-mono-nerd-font"
+# GPU-based terminal emulator
+cask "kitty"
+cargo "alacritty"
+cargo "bluetui"
+cargo "fsel"
+cargo "nirius"
+cargo "wiremix"
+cargo "wlr-which-key"
+uv "qmk", with: ["pip"]
+flatpak "fr.free.Homebank"
+npm "corepack"
