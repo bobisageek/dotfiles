@@ -110,11 +110,6 @@ configuration entries.
   @F19 @F20   @fst mlft mmid mrgt v _ _ _ , _ / _ @m↑
   @F21 @F22   @lctl @lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
 )
-;; Assign physical keys to hands. Keys not listed have no hand
-;; assignment and are governed by (unknown-hand <value>) (default: ignore).
-(defhands
-  (left  q w e r t a s d f g z x c v b)
-  (right y u i o p h j k l ; n m , . / [ ] Enter Backspace))
 
 (deftemplate hrm (tap-key hold-key)
   (tap-hold-order $tap-time 0 $tap-key $hold-key))
