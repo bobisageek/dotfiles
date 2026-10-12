@@ -1,0 +1,4 @@
+[theme.templates.user.my-kitty]
+input_path = "$XDG_CONFIG_HOME/noctalia/theming/kitty-colors.conf"
+output_path = "$XDG_CONFIG_HOME/kitty/kitty.d/noctalia/colors.conf"
+post_hook = "pkill -USR1 kitty >/dev/null 2>&1 || true"
