@@ -1,0 +1,3 @@
+[theme.templates.user.my-niri]
+input_path = "$XDG_CONFIG_HOME/noctalia/theming/niri-colors.conf"
+output_path = "$XDG_CONFIG_HOME/niri/theme/noctalia.kdl"
