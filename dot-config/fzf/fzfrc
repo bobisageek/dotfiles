@@ -1,8 +1,12 @@
 --scheme=path
---color=dark
+--color=fg:-1,bg:-1
+--color=fg+:15,bg+:8
+--color=hl:4,hl+:4,pointer:9,marker:10
+--color=prompt:5,header:6,info:11,border:8
 --reverse
 --margin=2%
 --border=rounded
+--border-label-pos=5
 --highlight-line
 --cycle
 --bind="`:jump,jump:accept"
