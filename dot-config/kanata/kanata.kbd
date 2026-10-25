@@ -20,12 +20,19 @@ configuration entries.
   file while unmapping lctl and ralt from defsrc.
   |#
   process-unmapped-keys yes
-)
+  linux-dev-names-exclude ("neru-keyboard-proxy" "neru-pointer-proxy" "neru-keyboard"))
 
 (defvirtualkeys
   com.mitchellh.ghostty nop0
   net.kovidgoyal.kitty nop0
 )
+
+;; deflocalkeys - 279 is 'Mouse Scroll Button Right' in solaar, used for DPI button on trackball
+(deflocalkeys-linux
+  task 279)
+
+(deflocalkeys-macos
+  task 279)
 
 (platform (macos)
   (defalias
@@ -86,6 +93,8 @@ configuration entries.
   F17 F18     caps a s d f g h j k l ;
   F19 F20     lshift z x c v b n m , . / rshift up
   F21 F22     lctl lmet lalt spc ralt  rctl left down right
+
+  task
 )
 
 (deflayer default
@@ -95,6 +104,8 @@ configuration entries.
   @F17 @F18   @cap @hrm-a @hrm-s @hrm-d @hrm-f g h @hrm-j @hrm-k @hrm-l @hrm-semic
   @F19 @F20   lshift z    x      c      v      b n m      ,      .      / rshift up
   @F21 @F22   @lctl @lmet lalt @spc-raised ralt rctl  left down right
+
+  lmet
 )
 
 (deflayermap (bare)
@@ -109,6 +120,8 @@ configuration entries.
   @F17 @F18   @cap @mw← @mw↓ @mw→ f _ left down up right _
   @F19 @F20   @fst mlft mmid mrgt v _ _ _ , _ / _ @m↑
   @F21 @F22   @lctl @lmet lalt @spc-raised ralt  @hyper @m← @m↓ @m→
+
+  lmet
 )
 
 (deftemplate hrm (tap-key hold-key)
