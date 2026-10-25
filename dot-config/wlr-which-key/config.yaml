@@ -86,3 +86,6 @@ menu:
       - key: [o]
         desc: select output
         cmd: switch_audio_sink
+  - key: "\\"
+    desc: neru
+    cmd: neru bisect
